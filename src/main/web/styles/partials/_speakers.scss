@@ -1,0 +1,32 @@
+
+.speaker {
+
+  summary {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 3.5rem;
+
+    .sep {
+      flex-grow: 1;
+    }
+    .company {
+      margin-right: .5rem;
+    }
+
+    .twitterCount {
+      margin-left: 1rem;
+    }
+  }
+
+  img {
+    margin: .25rem;
+    height: 3rem;
+    border-radius: 25%;
+    box-shadow: .125rem .125rem .125rem rgba(0, 0, 0, .25);
+  }
+
+  & > div {
+    padding: .125rem;
+  }
+}

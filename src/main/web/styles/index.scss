@@ -1,0 +1,51 @@
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  // Colors
+  --themeColor: #673AB7,
+}
+
+details {
+  border-radius: .25rem;
+  & > summary {
+    cursor: pointer;
+    padding-left: .5rem;
+    border-radius: .125rem;
+    transition-duration: .4s;
+    outline: medium solid transparent;
+    // Remove Arrow
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '▶️';
+      margin-right: .5rem;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, .0625);
+    }
+  }
+
+  &[open] {
+    background: rgba(0, 0, 0, .0625);
+    & > summary::before {
+      content: '🔽';
+    }
+  }
+
+}
+
+[title] {
+  cursor: help;
+}
+
+@import "partials/app";
+@import "partials/talks";
+@import "partials/talk";
+@import "partials/speakers";
+@import "partials/filter";
+@import "partials/vote";
+@import "partials/loading";

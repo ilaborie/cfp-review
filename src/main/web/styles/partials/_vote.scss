@@ -1,0 +1,97 @@
+
+form[name=voteForm] {
+  padding: .25rem;
+  display: flex;
+  flex-direction: column;
+
+  .evaluate, .stars {
+    margin: .25rem 0;
+    display: flex;
+    flex-direction: row;
+
+    .form-check {
+      margin-right: 1rem;
+    }
+  }
+
+  .evaluate {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+
+    label {
+      flex-grow: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      user-select: none;
+      border: 1px solid rgba(0, 0, 0, .125);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      cursor: pointer;
+
+      &:first-of-type {
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+      }
+    }
+
+    input[type=radio] {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+
+      &:checked + label {
+        background: rgba(0, 0, 0, .125);
+        box-shadow: 0 0 .125rem 1px rgba(0, 0, 0, .125);
+      }
+    }
+
+    .form-check {
+      flex-grow: 1;
+    }
+  }
+
+  .stars {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    direction: rtl;
+    justify-content: flex-end;
+
+    label::before {
+      font-family: Font Awesome\ 5 Free;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+      content: '\f005';
+      font-weight: 900;
+      color: #bbb;
+    }
+
+    input[type=radio] {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+
+      &:checked ~ label::before {
+        color: #f2b600;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, .5);
+      }
+    }
+
+  }
+}

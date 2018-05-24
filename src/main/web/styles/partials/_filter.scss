@@ -1,0 +1,23 @@
+form[name=talksFilter] {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: .25rem;
+
+  .form-group {
+    margin: .25rem;
+    //background: teal;
+  }
+
+  .theme, .status {
+    grid-column: span 2;
+    .card-body {
+      column-count: 2;
+    }
+  }
+
+  .txt {
+    grid-column: span 2;
+  }
+}

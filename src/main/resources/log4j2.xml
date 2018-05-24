@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{HH:mm:ss.SSS} %highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=white} %style{%logger{36}.%M()}{cyan} %style{@%L}{magenta} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Logger name="org.eclipse.jetty" level="WARN"/>
+        <Logger name="io.javalin" level="INFO"/>
+        <Logger name="feign" level="DEBUG"/>
+    </Loggers>
+</Configuration>

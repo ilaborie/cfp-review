@@ -1,0 +1,23 @@
+.loading {
+  display: block;
+  overflow: hidden;
+  height: 1.3em;
+  //margin-top: -0.3em;
+  line-height: 1.5em;
+  vertical-align: text-bottom;
+
+  font-size: 15rem;
+  text-align: center;
+}
+
+.loading::after {
+  display: inline-table;
+  white-space: pre;
+  text-align: left;
+
+  content: "🌑\A🌒\A🌓\A🌔\A🌕\A🌖\A🌗\A🌘";
+  animation: spin8 1s steps(8) infinite;
+  width: 1.3em;
+}
+
+@keyframes spin8  { to { transform: translateY(-12.0em); } }

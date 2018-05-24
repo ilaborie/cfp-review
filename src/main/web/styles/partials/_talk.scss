@@ -1,0 +1,22 @@
+.talk {
+  box-shadow: 2px 2px .25rem currentColor;
+  //border: thin solid currentColor;
+
+  .descr {
+    text-align: justify;
+  }
+
+  .card-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .date {
+    float: right;
+  }
+
+  .theme {
+    text-shadow: 1px 1px .0625rem rgba(0, 0, 0, .25);
+  }
+}

@@ -1,0 +1,86 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext.feign_version = '9.7.0'
+    ext.javalin_version = '1.7.0'
+    ext.jackson_version = '2.9.+'
+    ext.log4j_version = '2.11.0'
+    ext.config4k_version = '0.3.4'
+    ext.caffeine_version = '2.6.2'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+    }
+}
+
+group 'org.ilaborie'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+apply plugin: 'com.moowork.node'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    compile "io.javalin:javalin:$javalin_version"
+
+    compile "io.github.openfeign:feign-core:$feign_version"
+    compile "io.github.openfeign:feign-jackson:$feign_version"
+    compile "io.github.openfeign:feign-slf4j:$feign_version"
+
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
+
+    compile "org.apache.logging.log4j:log4j-api:$log4j_version"
+    compile "org.apache.logging.log4j:log4j-core:$log4j_version"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4j_version"
+
+    compile "io.github.config4k:config4k:$config4k_version"
+    compile "com.github.ben-manes.caffeine:caffeine:$caffeine_version"
+}
+
+
+task npmBuild(type: NpmTask) {
+    // install the express package only
+    args = ['run', 'build']
+    dependsOn yarn
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xjsr305=strict"]
+    }
+}
+compileKotlin.dependsOn(npmBuild)
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xjsr305=strict"]
+    }
+}
+
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.ilaborie.altcfp.MainKt"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

@@ -1,0 +1,10 @@
+.talks {
+  margin-top: 1rem;
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(16ch, auto);
+  flex-wrap: wrap;
+
+  grid-gap: .5rem 1rem;
+}
