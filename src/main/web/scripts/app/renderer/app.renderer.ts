@@ -72,7 +72,7 @@ export const appRenderer = createRenderer<AppState>(state => {
     
     ${state.loading ? `
   <div class="placeholder">
-    <span>⚠️ désoler, c'est lent (~1 min)</span>
+    <span>⚠️ désoler, c'est lent (~1 min), on doit faire une requête/talk pour avoir les notes</span>
     <span class="loading"></span>
   </div>` : renderSection(state, talks)}
     `;

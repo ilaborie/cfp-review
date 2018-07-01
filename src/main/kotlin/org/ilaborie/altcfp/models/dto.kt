@@ -29,11 +29,16 @@ data class TalkResponse(
         operator fun invoke(talk: Talk, rates: List<TalkRate>): TalkResponse {
             val groups: Map<String, TalkRate> = rates
                 .groupBy { talkRate -> talkRate.user?.email ?: "" }
-                .mapValues { (_, list) ->
+                .toList()
+                .mapNotNull { (email, list) ->
                     // XXX remove 'no rate' if have more than one vote
-                    if (list.size < 2) list.first()
-                    else list.first { it.rate != 0 }
+                    if (list.size < 2)
+                        email to list[0]
+                    else
+                        list.firstOrNull { it.rate != 0 }
+                            ?.let { email to it }
                 }
+                .toMap()
 
             val aux: List<Int> = groups
                 .filter { (_, rate) -> rate.rate > 0 }

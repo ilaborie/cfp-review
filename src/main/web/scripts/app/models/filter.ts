@@ -22,19 +22,19 @@ export const not = <T>(filter: Filter<T>): Filter<T> =>
 
 // Speaker Filter
 const textFilterSpeaker = (text: string): Filter<Speaker> => speaker => {
-    const crit = text.toLowerCase();
-    return speaker.lastname.toLowerCase().includes(crit) ||
-        speaker.firstname.toLowerCase().includes(crit) ||
+    const crit = (text||'').toLowerCase();
+    return (speaker.lastname||'').toLowerCase().includes(crit) ||
+        (speaker.firstname||'').toLowerCase().includes(crit) ||
         (speaker.company || '').toLowerCase().includes(crit);
 };
 
 // Talk Filter
 const textFilter = (text: string): Filter<Talk> => talk => {
-    const crit = text.toLowerCase();
+    const crit = (text||'').toLowerCase();
     const speakerFilter = textFilterSpeaker(crit);
 
-    return talk.name.toLowerCase().includes(crit) ||
-        talk.description.toLowerCase().includes(crit) ||
+    return (talk.name||'').toLowerCase().includes(crit) ||
+        (talk.description||'').toLowerCase().includes(crit) ||
         speakerFilter(talk.speaker) ||
         talk.cospeakers.some(s => !!s && speakerFilter(s));
 };
