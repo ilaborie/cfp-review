@@ -1,8 +1,8 @@
 @url=https://devfest-toulouse.cfp.io
 @token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbGFib3JpZUBnbWFpbC5jb20iLCJleHAiOjE3NTg3MTUxNDF9.EiTxu057N5ZxccZlASDWO-AFCbRd9fRM1_zfeuAFgsl3QjpKH5kFN5L5y8UZBKASuuhSPCF4iPiVAGsL8He5sg
 
-@talkId=4360
-@rate=36413
+@talkId=4593
+@rate=36918
 
 PUT {{url}}/api/proposals/{{talkId}}/rates/{{rate}}
 Cookie: token={{token}}

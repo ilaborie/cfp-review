@@ -60,14 +60,14 @@ internal class CachingBackend(private val delegate: CfpBackendApi) : CfpBackendA
         rateCache.get(id) ?: emptyList()
 
     override fun createTalkRate(id: Long, rate: TalkRate): TalkRate {
-        talkCache.refresh("")
-        rateCache.refresh(id)
+        talkCache.invalidate("")
+        rateCache.invalidate(id)
         return delegate.createTalkRate(id, rate)
     }
 
     override fun updateTalkRate(id: Long, rateId: Long, rate: TalkRate): TalkRate {
-        talkCache.refresh("")
-        rateCache.refresh(id)
+        talkCache.invalidate("")
+        rateCache.invalidate(id)
         return delegate.updateTalkRate(id, rateId, rate)
     }
 

@@ -26,6 +26,12 @@ const stateClass = (state: string): string => {
             return 'badge-warning';
         case 'CONFIRMED':
             return 'badge-success';
+        case 'ACCEPTED':
+            return 'badge-primary';
+        case 'BACKUP':
+            return 'badge-secondary';
+        case 'REFUSED':
+            return 'badge-danger';
         default:
             return 'badge-light';
     }
