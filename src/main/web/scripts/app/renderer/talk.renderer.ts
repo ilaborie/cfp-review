@@ -62,6 +62,7 @@ export const talkRenderer = createRenderer<Talk>(talk => {
         </h6>
       </div>
        <div class="card-body" style="color: initial">
+        <a href="https://devfest-toulouse.cfp.io/#/admin/sessions/${talk.id}?tab=vote">Open on cfp.io</a>       
         <p class="card-text">${marked(talk.description)}</p>
         ${talk.slides ? `<a href="${talk.slides}" class="card-link slides"><i class="fab fa-slideshare"></i> Slides</a>` : ''}
         ${talk.video ? `<a href="${talk.video}" class="card-link video"><i class="fab fa-youtube"></i> Vidéo</a>` : ''}
