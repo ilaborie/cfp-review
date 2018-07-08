@@ -2,6 +2,11 @@
   box-shadow: 2px 2px .25rem currentColor;
   //border: thin solid currentColor;
 
+  .card-title::before {
+    counter-increment: talk;
+    content: '[#' counter(talk) ']';
+  }
+
   .descr {
     text-align: justify;
   }
